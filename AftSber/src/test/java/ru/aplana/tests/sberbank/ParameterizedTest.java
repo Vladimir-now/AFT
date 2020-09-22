@@ -8,11 +8,42 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import ru.aplana.tests.base.BaseClass;
-import ru.aplana.tests.sberbank.form.Form;
 import ru.aplana.tests.sberbank.form.XPathFormSber;
+
+import java.util.Arrays;
+import java.util.Collection;
+
 
 @RunWith(Parameterized.class)
 public class ParameterizedTest extends BaseClass {
+    @Parameterized.Parameters
+    public static Collection data(){
+        return Arrays.asList(new String[][]{
+                {"Васильев", "Василий", "Васильевич", "VASILII VASILEV","12.02.1998","firstperson@mail.ru","(999) 555-77-22"},
+                {"Петров", "Петр", "Дунаевич", "PETR PETROV","11.07.2001","seconperson@mail.ru","(999) 333-44-55"},
+                {"Сидоров", "Игорь", "Игоревич", "IGOR SIDOROV", "01.11.1999","nextperson@mail.ru","(991) 322-45-35"}
+        });
+    }
+    @Parameterized.Parameter(0)
+    public String lastName;
+
+    @Parameterized.Parameter(1)
+    public String firstName;
+
+    @Parameterized.Parameter(2)
+    public String middleName;
+
+    @Parameterized.Parameter(3)
+    public String cardName;
+
+    @Parameterized.Parameter(4)
+    public String birthDate;
+
+    @Parameterized.Parameter(5)
+    public String eMail;
+
+    @Parameterized.Parameter(6)
+    public String phoneNumber;
 
     @Test
     public void scenarioSber() {
